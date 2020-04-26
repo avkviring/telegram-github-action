@@ -1,0 +1,8 @@
+name: Telegram Notification
+author: Kviring Aleksey
+description: Send message with full information about action in github repository.
+inputs:
+  telegram_to:
+    required: true
+  telegram_token:
+    required: true
