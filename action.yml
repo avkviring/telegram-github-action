@@ -1,0 +1,14 @@
+name: Telegram Notification
+author: Kviring Aleksey
+description: Send message to telegram with full information about action (push/pr/release) in github repository.
+inputs:
+  telegram_to:
+    required: true
+  telegram_token:
+    required: true
+runs: 
+  using: 'docker'
+  image: 'docker/Dockerfile'
+branding:
+  icon: 'align-justify'  
+  color: 'blue'

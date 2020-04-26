@@ -1,0 +1,17 @@
+[package]
+name = "telegram-github-acttion"
+version = "0.1.0"
+authors = ["kviring <alex@kviring.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+telegram-bot = "0.7.0"
+tokio = { version = "0.2", features = ["fs"]}
+serde = "1.0.106"
+serde_derive = "1.0"
+serde_json = "1.0"
+
+[dev-dependencies]
+tokio = { version = "0.2", features = ["macros", "time", "fs"] }
