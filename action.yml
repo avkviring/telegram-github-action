@@ -10,5 +10,5 @@ runs:
   using: 'docker'
   image: 'avkviring/telegram-github-action'
 branding:
-  _icon: 'award'  
-  _color: 'blue'
+  icon: 'align-justify'  
+  color: 'blue'
