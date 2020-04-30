@@ -10,7 +10,7 @@ inputs:
     required: true
 runs: 
   using: 'docker'
-  image: 'docker://docker.pkg.github.com/avkviring/telegram-github-action/telegram-github-action:latest'
+  image: 'docker/Dockerfile'
 branding:
   icon: 'align-justify'  
   color: 'blue'
