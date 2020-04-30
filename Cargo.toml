@@ -8,10 +8,7 @@ edition = "2018"
 
 [dependencies]
 telegram-bot = "0.7.0"
-tokio = { version = "0.2", features = ["fs"]}
 serde = "1.0.106"
 serde_derive = "1.0"
 serde_json = "1.0"
-
-[dev-dependencies]
 tokio = { version = "0.2", features = ["macros", "time", "fs"] }
