@@ -9,4 +9,5 @@ COPY --from=builder /tmp/bin/telegram-github-acttion /telegram-github-acttion
 RUN chmod +x /telegram-github-acttion
 RUN apt-get update
 RUN apt-get install openssl -y
+RUN apt-get install ca-certificates
 ENTRYPOINT /telegram-github-acttion

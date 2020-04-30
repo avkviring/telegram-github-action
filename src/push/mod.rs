@@ -34,7 +34,7 @@ fn format_commit_message(author: String, repo: Repository, commits: Vec<Commit>)
             acc
         });
     return format!(
-        "*[{}](https://github.com/{}) push to [{}]({})*\n {}",
+        "[{}](https://github.com/{}) push to [{}]({})\n {}",
         author, author, repo.name, repo.html_url, concat
     );
 }

@@ -11,36 +11,24 @@ use telegram_bot::{
 };
 
 use crate::push::process_push_event;
+use crate::telegram::send_message_to_telegram;
 
 pub mod github;
 pub mod push;
+pub mod telegram;
+
+#[cfg(test)]
+pub mod test;
 
 #[tokio::main]
 async fn main() {
     let event = env::var("event").expect("Add environment event:${{ github.event }}");
     let message = process_push_event(event.to_string());
-    send_message(message).await;
-}
 
-async fn send_message(text: String) {
     let token = env::var("telegram_token")
         .expect("Add environment telegram_token:${{ secrets.telegram_token }}");
     let chat_id =
         env::var("telegram_to").expect("Add environment telegram_to:${{ secrets.telegram_to }}");
 
-    let api = Api::new(token);
-
-    let chat = ChatRef::from_chat_id(ChatId::new(chat_id.parse::<i64>().unwrap()));
-    let mut message = SendMessage::new(chat, text);
-
-    message.disable_preview();
-    message.parse_mode(ParseMode::Markdown);
-
-    let response = api.send(message);
-    let result = response.await;
-
-    match result {
-        Ok(result) => println!("{:?}", result),
-        Err(e) => panic!("{}", e),
-    };
+    send_message_to_telegram(token, chat_id, message).await;
 }
