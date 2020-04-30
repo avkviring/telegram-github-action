@@ -17,14 +17,11 @@ pub mod push;
 
 #[tokio::main]
 async fn main() {
-    println!("start actions");
     let event = env::var("event").expect("Add environment event:${{ github.event }}");
     let message = process_push_event(event.to_string());
     send_message(message).await;
 }
 
-// "1064561948:AAGSBEsVJbyKTFtSmYaTkYWDkFvEdgYBtRA".to_string();
-// 343874845
 async fn send_message(text: String) {
     let token = env::var("telegram_token")
         .expect("Add environment telegram_token:${{ secrets.telegram_token }}");
