@@ -1,13 +1,13 @@
 use std::fs;
 
-use crate::github::PushEvent;
+use crate::github::{PushEvent, Repository};
 
 pub fn process_push_event(event: String) -> String {
     let result: PushEvent = serde_json::from_str(event.as_str()).unwrap();
 
     let message = format_commit_message(
         result.pusher.name,
-        result.repository.name,
+        result.repository,
         result
             .commits
             .iter()
@@ -25,7 +25,7 @@ struct Commit {
     comment: String,
 }
 
-fn format_commit_message(author: String, repo: String, commits: Vec<Commit>) -> String {
+fn format_commit_message(author: String, repo: Repository, commits: Vec<Commit>) -> String {
     let concat = commits
         .iter()
         .map(|c| format!("[➞]({}) {}\n", c.href, c.comment))
@@ -33,5 +33,5 @@ fn format_commit_message(author: String, repo: String, commits: Vec<Commit>) -> 
             acc.push_str(&g.to_string());
             acc
         });
-    return format!("*{} push to {}*\n {}", author, repo, concat);
+    return format!("*[{}](https://github.com/{}) push to [{}]({})*\n {}", author, author, repo.name,repo.html_url concat);
 }

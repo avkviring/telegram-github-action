@@ -37,4 +37,5 @@ pub struct Pusher {
 #[derive(Deserialize, Debug)]
 pub struct Repository {
     pub name: String,
+    pub html_url: String,
 }
