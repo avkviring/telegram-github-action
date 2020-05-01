@@ -1,4 +1,4 @@
-name: TGRE - Telegram GitHub Repository Events
+name: Telegram GitHub Repository Events
 author: Kviring Aleksey
 description: Send message to telegram with full information about action (push/pr/release) in github repository.
 inputs:
