@@ -25,7 +25,7 @@ pub struct Commit {
 pub struct Author {
     pub email: String,
     pub name: String,
-    pub username: String,
+    pub username: Option<String>,
 }
 
 #[derive(Deserialize, Debug)]
