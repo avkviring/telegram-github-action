@@ -1,14 +1,14 @@
-name: telegram
-
+name: Send push notification to Telegram
 on:
   push:
     branches: [ master ]  
+    
 jobs:
   build:    
     runs-on: ubuntu-latest    
     steps:        
-    - uses: avkviring/telegram-github-action@master
+    - uses: avkviring/telegram-github-action@v0.0.7
       env:
-        telegram_to: ${{ secrets.telegram_to }}  
-        telegram_token: ${{ secrets.telegram_token }}
+        telegram_to: ${{ secrets.TELEGRAM_TO }}  
+        telegram_token: ${{ secrets.TELEGRAM_TOKEN }}
         event: ${{ toJson(github.event) }}
