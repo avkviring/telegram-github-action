@@ -1,11 +1,7 @@
 #[macro_use]
 extern crate serde_derive;
 
-
-use std::{env};
-
-
-
+use std::env;
 
 use crate::push::process_push_event;
 use crate::telegram::send_message_to_telegram;
@@ -26,6 +22,9 @@ async fn main() {
         .expect("Add environment telegram_token:${{ secrets.telegram_token }}");
     let chat_id =
         env::var("telegram_to").expect("Add environment telegram_to:${{ secrets.telegram_to }}");
+
+    println!("token {:?}", token);
+    println!("chat id {:?}", chat_id);
 
     send_message_to_telegram(token, chat_id, message).await;
 }
