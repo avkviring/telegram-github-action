@@ -1,14 +1,7 @@
 #[macro_use]
 extern crate serde_derive;
 
-use std::panic::resume_unwind;
-use std::{env, fs};
-
-use telegram_bot::*;
-use telegram_bot::{
-    Api, ChatId, ChatRef, Error, GetMe, Message, MessageOrChannelPost, Request, ResponseType,
-    SendMessage, UpdateKind,
-};
+use std::env;
 
 use crate::push::process_push_event;
 use crate::telegram::send_message_to_telegram;
