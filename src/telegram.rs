@@ -6,7 +6,7 @@ pub async fn send_message_to_telegram(token: String, chat_id: String, text: Stri
     let mut message = SendMessage::new(chat, text);
 
     message.disable_preview();
-    message.parse_mode(ParseMode::Markdown);
+    message.parse_mode(ParseMode::MarkdownV2);
 
     let response = api.send(message);
     let result = response.await;
