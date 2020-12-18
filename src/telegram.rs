@@ -4,8 +4,7 @@ pub async fn send_message_to_telegram(token: String, chat_id: String, text: Stri
     let api = Api::new(token);
     let chat = ChatRef::from_chat_id(ChatId::new(chat_id.parse::<i64>().unwrap()));
 
-    println!("{:?}", text);
-    let mut message = SendMessage::new(chat, text);
+    let mut message = SendMessage::new(chat, text.clone());
 
     message.disable_preview();
     message.parse_mode(ParseMode::MarkdownV2);
@@ -14,7 +13,7 @@ pub async fn send_message_to_telegram(token: String, chat_id: String, text: Stri
     let result = response.await;
 
     match result {
-        Ok(result) => println!("{:?}", result),
-        Err(e) => panic!("{}", e),
+        Ok(result) => println!("{:?}, message {:#?}", result, text),
+        Err(e) => panic!("error {}, message {:#?}", e, text),
     };
 }
