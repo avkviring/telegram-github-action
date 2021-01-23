@@ -1,4 +1,5 @@
-use crate::push::process_push_event;
+use crate::event::push::process_push_event;
+use crate::event::release::process_release_event;
 use crate::send_message_to_telegram;
 use std::fs::read_to_string;
 
@@ -14,4 +15,10 @@ async fn test_send_message() {
 async fn test_send_push_message() {
     let message = process_push_event(read_to_string("docs/push.json").unwrap());
     send_message_to_telegram(TOKEN.to_string(), CHAT_ID.to_string(), message).await;
+}
+
+#[tokio::test]
+async fn test_send_release_message() {
+    let message = process_release_event(read_to_string("docs/release.json").unwrap());
+    println!("{}", message);
 }
