@@ -1,4 +1,4 @@
-## Push support
+## Setup
 
 - add file telegram.yml to .github/workflows
 - add secrets (telegram_to, telegram_token)
@@ -11,11 +11,14 @@ name: telegram
 on:
   push:
     branches: [ master ]  
+ release:    
+    types:
+      - created    
 jobs:
   build:    
     runs-on: ubuntu-latest    
     steps:        
-    - uses: avkviring/telegram-github-action@v0.0.9
+    - uses: avkviring/telegram-github-action@v0.0.10
       env:
         telegram_to: ${{ secrets.telegram_to }}  
         telegram_token: ${{ secrets.telegram_token }}
@@ -29,3 +32,9 @@ user push to repo
  ➞ Commit message 2
  ➞ Commit message 3
 ``` 
+
+```
+user release repo@tag
+Release title
+Release body 
+```
