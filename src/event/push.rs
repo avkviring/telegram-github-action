@@ -32,7 +32,7 @@ fn format_commit_message(author: String, repo: Repository, commits: Vec<Commit>)
             acc
         });
     return format!(
-        "[{}](https://github.com/{}) push to [{}]({})\n {}",
+        "[{}](https://github.com/{}) push to [{}]({})\n{}",
         escape_markdown(&author),
         author,
         escape_markdown(&repo.full_name),
