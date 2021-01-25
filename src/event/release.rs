@@ -11,7 +11,6 @@ pub fn process_release_event(event: String) -> String {
         result.release.tag_name,
         result.release.html_url,
         result.release.name,
-        result.release.body,
     )
 }
 
@@ -22,16 +21,14 @@ fn format_release_message(
     tag_name: Option<String>,
     release_url: String,
     name: Option<String>,
-    body: Option<String>,
 ) -> String {
     return format!(
-        "[{}]({}) release [{}@{}]({})\n*{}*\n{}",
+        "[{}]({}) release [{}@{}]({})\n{}",
         escape_markdown(&author),
         escape_markdown(&author_url),
         escape_markdown(&repo.full_name),
         escape_markdown(&tag_name.unwrap_or("".to_string())),
         escape_markdown(&release_url),
         escape_markdown(&name.unwrap_or("".to_string())),
-        escape_markdown(&body.unwrap_or("".to_string()))
     );
 }
