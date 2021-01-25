@@ -13,12 +13,12 @@ on:
     branches: [ master ]  
  release:    
     types:
-      - created    
+      - published    
 jobs:
   build:    
     runs-on: ubuntu-latest    
     steps:        
-    - uses: avkviring/telegram-github-action@v0.0.11
+    - uses: avkviring/telegram-github-action@v0.0.12
       env:
         telegram_to: ${{ secrets.telegram_to }}  
         telegram_token: ${{ secrets.telegram_token }}
@@ -36,5 +36,4 @@ user push to repo
 ```
 user release repo@tag
 Release title
-Release body 
 ```
