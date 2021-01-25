@@ -1,0 +1,8 @@
+fix: fix/*
+feat: feat/*
+docs: docs/*
+style: style/*
+refactor: refactor/*
+test: test/*
+chore: chore/*
+BREAKING: breaking/*

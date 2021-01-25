@@ -1,18 +1,42 @@
-name-template: 'v$NEXT_PATCH_VERSION'
-tag-template: 'v$NEXT_PATCH_VERSION'
+#- fix - исправление ошибок
+#- feat - новая функциональность для пользователя, но не ломающая совместимость API
+#- docs - изменения в документации
+#- style - форматирование
+#- refactor - рефакторинг
+#- test - работа с тестами
+#- chore - обновление рутинных задач и т. д.; без изменения производственного кода
+#- BREAKING CHANGE - изменение, ломающее обратную совместимость
+
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
 categories:
   - title: 'Features'
     labels:
-      - 'feature'
-      - 'enhancement'
+      - 'feat'      
+      - 'BREAKING CHANGE'
+  - title: 'Maintenance'
+    labels:
+      - 'docs'
+      - 'style'
+      - 'refactor'
+      - 'test'
+      - 'chore'
   - title: 'Bug Fixes'
     labels:
       - 'fix'
-      - 'bugfix'
-      - 'bug'
-  - title: 'Maintenance'
-    label: 'chore'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+version-resolver:
+  major:
+    labels:
+      - 'major'
+  minor:
+    labels:
+      - 'minor'
+  patch:
+    labels:
+      - 'patch'
+  default: patch
 template: |
   ## Changes
 
