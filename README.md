@@ -18,7 +18,7 @@ jobs:
   build:    
     runs-on: ubuntu-latest    
     steps:        
-    - uses: avkviring/telegram-github-action@v0.0.13
+    - uses: avkviring/telegram-github-action@v0.0.15
       env:
         telegram_to: ${{ secrets.telegram_to }}  
         telegram_token: ${{ secrets.telegram_token }}
