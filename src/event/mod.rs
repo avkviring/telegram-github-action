@@ -5,6 +5,7 @@ pub mod release;
 pub struct PushEvent {
     pub after: String,
     pub base_ref: Option<String>,
+    pub r#ref: String,
     pub before: String,
     pub commits: Vec<Commit>,
     pub compare: String,
