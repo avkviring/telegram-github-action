@@ -37,13 +37,15 @@ String {
 
     let repo_simple_name = &repo.full_name[repo.full_name.find("/").unwrap() + 1..repo.full_name.len
     ()];
+    let branch = target.replace("refs/heads/", "");
     return format!(
-        "[{}](https://github.com/{}) push to [{}\\({}\\)]({})\n{}",
+        "[{}](https://github.com/{}) push to [{}]({}):[{}]({})\n{}",
         escape_markdown(&author),
         author,
         escape_markdown(repo_simple_name),
-        target.replace("refs/heads/", ""),
         repo.html_url,
+        branch,
+        format!("{}/tree/{}", repo.html_url, branch),
         concat
     );
 }
@@ -72,7 +74,7 @@ mod tests {
                                            commits);
 
         println!("{}", result);
-        assert_eq!(result, "[kviring](https://github.com/kviring) push to [repo\\(master\\)]\
-        (repo_url)\n[➞](commit_url) commit\\_comment\n")
+        assert_eq!(result, "[kviring](https://github.com/kviring) push to [repo](repo_url):[master](repo_url/tree/master)\
+        \n[➞](commit_url) commit\\_comment\n")
     }
 }
