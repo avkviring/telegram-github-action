@@ -44,7 +44,7 @@ String {
         author,
         escape_markdown(repo_simple_name),
         repo.html_url,
-        branch,
+        escape_markdown(&branch),
         format!("{}/tree/{}", repo.html_url, branch),
         concat
     );
@@ -64,7 +64,7 @@ mod tests {
                 .to_string
                 (),
         };
-        let target = "refs/heads/master";
+        let target = "refs/heads/my-branch";
         let commits = vec![Commit {
             href: "commit_url".to_string(),
             comment: "commit_comment"
@@ -74,7 +74,8 @@ mod tests {
                                            commits);
 
         println!("{}", result);
-        assert_eq!(result, "[kviring](https://github.com/kviring) push to [repo](repo_url):[master](repo_url/tree/master)\
+        assert_eq!(result, "[kviring](https://github.com/kviring) push to [repo](repo_url):[my\\-branch]\
+        (repo_url/tree/master)\
         \n[➞](commit_url) commit\\_comment\n")
     }
 }
