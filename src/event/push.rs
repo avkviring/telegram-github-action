@@ -1,4 +1,4 @@
-use crate::event::{PushEvent, Repository};
+use crate::event::{PushEvent, GitlabPushEvent, GitlabRepository, Repository};
 use crate::markdown::escape_markdown;
 
 pub fn process_push_event(event: String) -> String {
@@ -7,6 +7,24 @@ pub fn process_push_event(event: String) -> String {
 
     format_commit_message(
         result.pusher.name,
+        result.repository,
+        result.r#ref,
+        result
+            .commits
+            .iter()
+            .map(|r| Commit {
+                href: r.url.clone(),
+                comment: r.message.clone(),
+            })
+            .collect(),
+    )
+}
+
+pub fn process_gitlab_push_event(event: String) -> String {
+    let result: GitlabPushEvent = serde_json::from_str(event.as_str()).unwrap();
+
+    format_gitlab_commit_message(
+        result.user_name,
         result.repository,
         result.r#ref,
         result
@@ -50,6 +68,30 @@ String {
     );
 }
 
+fn format_gitlab_commit_message(author: String, repo: GitlabRepository, target: String, commits: Vec<Commit>) ->
+String {
+    let concat = commits
+        .iter()
+        .map(|c| format!("[➞]({}) {}\n", c.href, escape_markdown(&c.comment)))
+        .fold("".to_string(), |mut acc, g| {
+            acc.push_str(&g.to_string());
+            acc
+        });
+
+    //let repo_simple_name = &repo.name[repo.name.find("/").unwrap() + 1..repo.name.len()];
+    let branch = target.replace("refs/heads/", "");
+    return format!(
+        "[{}](https://github.com/{}) push to [{}]({}):[{}]({})\n{}",
+        escape_markdown(&author),
+        author,
+        // escape_markdown(repo_simple_name),
+        escape_markdown(&repo.name),
+        repo.git_http_url,
+        escape_markdown(&branch),
+        format!("{}/tree/{}", repo.git_http_url, branch),
+        concat
+    );
+}
 
 #[cfg(test)]
 mod tests {

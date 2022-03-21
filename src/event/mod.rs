@@ -14,6 +14,18 @@ pub struct PushEvent {
 }
 
 #[derive(Deserialize, Debug)]
+pub struct GitlabPushEvent {
+    pub after: String,
+    pub base_ref: Option<String>,
+    pub r#ref: String,
+    pub before: String,
+    pub commits: Vec<GitlabCommit>,
+    pub user_name: String,
+    pub user_email: String,
+    pub repository: GitlabRepository,
+}
+
+#[derive(Deserialize, Debug)]
 pub struct ReleaseEvent {
     pub action: String,
     pub release: Release,
@@ -42,6 +54,15 @@ pub struct Commit {
 }
 
 #[derive(Deserialize, Debug)]
+pub struct GitlabCommit {
+    pub author: CommitAuthor,
+    pub id: String,
+    pub message: String,
+    pub timestamp: String,
+    pub url: String,
+}
+
+#[derive(Deserialize, Debug)]
 pub struct CommitAuthor {
     pub email: String,
     pub name: String,
@@ -64,4 +85,10 @@ pub struct Pusher {
 pub struct Repository {
     pub full_name: String,
     pub html_url: String,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct GitlabRepository {
+    pub name: String,
+    pub git_http_url: String,
 }
