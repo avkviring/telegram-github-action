@@ -1,0 +1,108 @@
+{
+  "object_kind": "push",
+  "event_name": "push",
+  "before": "802b3748c73054114c33a359475cb5f491709f88",
+  "after": "83b85ebeee8971e87f0489bc8cad4a040ba17955",
+  "ref": "refs/heads/master",
+  "checkout_sha": "83b85ebeee8971e87f0489bc8cad4a040ba17955",
+  "message": null,
+  "user_id": 10,
+  "user_name": "Evgeny Lukyanenko",
+  "user_username": "juz",
+  "user_email": null,
+  "user_avatar": "https://secure.gravatar.com/avatar/ab66ab1ae567c9aae822e06f57f1e482?s=80&d=identicon",
+  "project_id": 16,
+  "project": {
+    "id": 16,
+    "name": "syncario",
+    "description": null,
+    "web_url": "https://gitlab.dev.cheetah.games/wolfhive/syncario",
+    "avatar_url": null,
+    "git_ssh_url": "git@gitlab.dev.cheetah.games:wolfhive/syncario.git",
+    "git_http_url": "https://gitlab.dev.cheetah.games/wolfhive/syncario.git",
+    "namespace": "wolfhive",
+    "visibility_level": 0,
+    "path_with_namespace": "wolfhive/syncario",
+    "default_branch": "master",
+    "ci_config_path": null,
+    "homepage": "https://gitlab.dev.cheetah.games/wolfhive/syncario",
+    "url": "git@gitlab.dev.cheetah.games:wolfhive/syncario.git",
+    "ssh_url": "git@gitlab.dev.cheetah.games:wolfhive/syncario.git",
+    "http_url": "https://gitlab.dev.cheetah.games/wolfhive/syncario.git"
+  },
+  "commits": [
+    {
+      "id": "83b85ebeee8971e87f0489bc8cad4a040ba17955",
+      "message": "Удалён IntentionType\n",
+      "title": "Удалён IntentionType",
+      "timestamp": "2022-03-22T14:37:27+05:00",
+      "url": "https://gitlab.dev.cheetah.games/wolfhive/syncario/-/commit/83b85ebeee8971e87f0489bc8cad4a040ba17955",
+      "author": {
+        "name": "Mikhail Fominykh",
+        "email": "mfominyh@gmail.com"
+      },
+      "added": [],
+      "modified": [
+        "Assets/Scripts/Interface/Game/Connection/Scripts/ConnectionIndicator.cs",
+        "Assets/Scripts/Interface/Game/Connection/Scripts/ConnectionIndicatorAnimate.cs",
+        "Assets/Scripts/Interface/Game/Connection/Scripts/ConnectionIndicatorUpdate.cs",
+        "Assets/Scripts/Player/PlayersInteractions.cs",
+        "Assets/Scripts/Syncariots/Connection/ConnectionsUpdateJob.cs",
+        "Assets/Scripts/Syncariots/Shield/Limb/LimbData.cs",
+        "Assets/Scripts/Syncariots/Shield/Limb/LimbManager.cs",
+        "Assets/Scripts/Syncariots/Shield/Limb/LimbNetworkObjectUpdate.cs"
+      ],
+      "removed": [
+        "Assets/Scripts/Syncariots/IntentionType.cs",
+        "Assets/Scripts/Syncariots/IntentionType.cs.meta"
+      ]
+    },
+    {
+      "id": "a1b8da58fcd0e05987dd4b737a6e9df13210c9b3",
+      "message": "Исправлена сильная зависимость физической симуляции от частоты кадров\n",
+      "title": "Исправлена сильная зависимость физической симуляции от частоты кадров",
+      "timestamp": "2022-03-21T17:29:32+05:00",
+      "url": "https://gitlab.dev.cheetah.games/wolfhive/syncario/-/commit/a1b8da58fcd0e05987dd4b737a6e9df13210c9b3",
+      "author": {
+        "name": "Mikhail Fominykh",
+        "email": "mfominyh@gmail.com"
+      },
+      "added": [],
+      "modified": [
+        "Assets/Configs/PhysicsSettings.asset",
+        "Assets/Scripts/Physics/PhysicsSettings.cs",
+        "Assets/Scripts/Physics/PhysicsUpdate.cs",
+        "Assets/Scripts/Syncariots/ControlArrowsApply.cs",
+        "Assets/Scripts/Utils/GameLoop.cs"
+      ],
+      "removed": []
+    },
+    {
+      "id": "802b3748c73054114c33a359475cb5f491709f88",
+      "message": "Исправлен NPE в WindSystem\n",
+      "title": "Исправлен NPE в WindSystem",
+      "timestamp": "2022-03-21T16:42:18+05:00",
+      "url": "https://gitlab.dev.cheetah.games/wolfhive/syncario/-/commit/802b3748c73054114c33a359475cb5f491709f88",
+      "author": {
+        "name": "Mikhail Fominykh",
+        "email": "mfominyh@gmail.com"
+      },
+      "added": [],
+      "modified": [
+        "Assets/Scripts/DynamicFoliage/WindSystem.cs"
+      ],
+      "removed": []
+    }
+  ],
+  "total_commits_count": 3,
+  "push_options": {},
+  "repository": {
+    "name": "syncario",
+    "url": "git@gitlab.dev.cheetah.games:wolfhive/syncario.git",
+    "description": null,
+    "homepage": "https://gitlab.dev.cheetah.games/wolfhive/syncario",
+    "git_http_url": "https://gitlab.dev.cheetah.games/wolfhive/syncario.git",
+    "git_ssh_url": "git@gitlab.dev.cheetah.games:wolfhive/syncario.git",
+    "visibility_level": 0
+  }
+}
