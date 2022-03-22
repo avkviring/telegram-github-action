@@ -20,8 +20,8 @@ async fn test_send_push_message() {
 
 #[tokio::test]
 async fn test_send_gitlab_push_message() {
-    println!("{}",read_to_string("docs/push-gitlab.json").unwrap());
-    let message = process_gitlab_push_event(read_to_string("docs/push-gitlab.json").unwrap());
+    println!("{}",read_to_string("docs/push-gitlab-real.json").unwrap());
+    let message = process_gitlab_push_event(read_to_string("docs/push-gitlab-real.json").unwrap());
     send_message_to_telegram(TOKEN.to_string(), CHAT_ID.to_string(), message).await;
 }
 

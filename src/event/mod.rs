@@ -21,7 +21,7 @@ pub struct GitlabPushEvent {
     pub before: String,
     pub commits: Vec<GitlabCommit>,
     pub user_name: String,
-    pub user_email: String,
+    pub user_email: Option<String>,
     pub repository: GitlabRepository,
 }
 

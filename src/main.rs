@@ -3,7 +3,7 @@ extern crate serde_derive;
 
 use std::env;
 
-use crate::event::push::process_push_event;
+use crate::event::push::{process_gitlab_push_event, process_push_event};
 use crate::event::release::process_release_event;
 use crate::telegram::send_message_to_telegram;
 use std::convert::Infallible;
@@ -22,6 +22,9 @@ pub mod telegram;
 
 #[cfg(test)]
 pub mod test;
+
+const TOKEN: &str = "2127284370:AAHO9SCKCOsWyE7A7gOxnATk7enA8zB6-8s";
+const CHAT_ID: &str = "588813729";
 
 #[tokio::main]
 async fn main() {
@@ -58,7 +61,12 @@ async fn hello_world(_req: Request<Body>) -> Result<Response<Body>, Infallible> 
             }
 
             let vec = _req.into_body().data().await.unwrap().unwrap().to_vec();
-            println!("{}", std::str::from_utf8(&vec).unwrap());
+            let strBody = std::str::from_utf8(&vec).unwrap();
+
+            let message = process_gitlab_push_event(strBody.to_string());
+            send_message_to_telegram(TOKEN.to_string(), CHAT_ID.to_string(), message).await;
+
+
             // *response.body_mut() = _req.into_body();
         }
         _ => {
