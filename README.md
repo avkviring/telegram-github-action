@@ -27,7 +27,9 @@ jobs:
 
 **Result in telegram**
 ```
-user push to repo
+user               - имя: Telegram GitHub Repository Events
+              использует: avkviring/telegram-github-action@v0.0.18
+            push to repo
  ➞ Commit message 1
  ➞ Commit message 2
  ➞ Commit message 3
